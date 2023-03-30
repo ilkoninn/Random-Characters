@@ -14,7 +14,7 @@ class RandomChoicer:
         self.working = True
 
     def Program(self):
-        choice = self.Menu()
+        choice = self.Menu()#3
 
         if choice == 1:
             self.AddStudent()
@@ -93,7 +93,9 @@ f"""    {i['id']}. {i['lname']} {i['name']} {i['class']}""")
             delete_id = int(input(f"""
         Choice ID which you want to delete student(1-{max_id}): """))
 
-            data.remove(data[delete_id-1])
+            for i in data:
+                if delete_id == i["id"]:
+                    data.remove(i)
 
             with open('data.json', 'w') as doc:
                 doc.write(json.dumps(data))
@@ -109,6 +111,10 @@ f"""    {i['id']}. {i['lname']} {i['name']} {i['class']}""")
             for i in data:
                 print(
 f"""    {i['id']}. {i['lname']} {i['name']} {i['class']}""")
+
+            print("""
+            Count of All students: """ + str(len(data)))        
+        
 
     def RandomStudent(self):
         print("""
@@ -148,7 +154,7 @@ f"""    {count}. {i['lname']} {i['name']} {i['class']}""")
                     file_name = input("""
             Please enter your file name: """)
                     
-                    with open(f'DATA/{file_name}.txt', 'x') as doc:
+                    with open(f'Files DATA/{file_name}.txt', 'x') as doc:
                         doc.write(new_str)
                     break
                 except FileExistsError:
