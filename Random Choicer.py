@@ -1,6 +1,8 @@
 import random, json
 
 class RandomChoicer:
+    print("""
+---------------- WELCOME TO THE RANDOM CHOICER ----------------\n""")
     while True:
         try:
             money = int(input("""
